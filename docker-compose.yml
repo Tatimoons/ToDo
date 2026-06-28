@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:${POSTGRES_VERSION}
+    container_name: todo-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - todo_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  todo_postgres_data:

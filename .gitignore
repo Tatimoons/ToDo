@@ -17,6 +17,7 @@
 # Environment variables and local configuration
 .env
 .env.*
+!.env.example
 **/application-local.properties
 **/application-local.yml
 **/application-local.yaml
