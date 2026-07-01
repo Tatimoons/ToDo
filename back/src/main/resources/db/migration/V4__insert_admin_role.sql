@@ -3,7 +3,7 @@ INSERT INTO roles (
     name,
     description,
     enabled,
-    is_system,
+    system,
     created_at,
     created_by,
     updated_at,
