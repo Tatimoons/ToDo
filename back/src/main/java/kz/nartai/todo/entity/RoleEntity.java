@@ -1,7 +1,6 @@
 package kz.nartai.todo.entity;
 
 import jakarta.persistence.*;
-
 import java.time.OffsetDateTime;
 
 @Entity
