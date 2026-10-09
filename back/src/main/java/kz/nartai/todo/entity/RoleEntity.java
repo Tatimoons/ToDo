@@ -54,12 +54,10 @@ public class RoleEntity {
         this.updatedAt = OffsetDateTime.now();
     }
 
-    // id
     public Long getId() {
         return id;
     }
 
-    // code
     public String getCode() {
         return code;
     }
@@ -68,7 +66,6 @@ public class RoleEntity {
         this.code = code;
     }
 
-    // name
     public String getName() {
         return name;
     }
@@ -77,7 +74,6 @@ public class RoleEntity {
         this.name = name;
     }
 
-    // description
     public String getDescription() {
         return description;
     }
@@ -86,7 +82,6 @@ public class RoleEntity {
         this.description = description;
     }
 
-    // enable
     public boolean isEnabled() {
         return enabled;
     }
@@ -99,7 +94,6 @@ public class RoleEntity {
         this.enabled = false;
     }
 
-    // system
     public boolean isSystem() {
         return system;
     }
@@ -108,12 +102,10 @@ public class RoleEntity {
         this.system = system;
     }
 
-    // created_at
     public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
 
-    // created_by
     public UserEntity getCreatedBy() {
         return createdBy;
     }
@@ -122,12 +114,10 @@ public class RoleEntity {
         this.createdBy = createdBy;
     }
 
-    // updated_at
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    // updated_by
     public UserEntity getUpdatedBy() {
         return updatedBy;
     }

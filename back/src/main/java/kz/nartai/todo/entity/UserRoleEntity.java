@@ -33,12 +33,10 @@ public class UserRoleEntity {
         this.assignedAt = OffsetDateTime.now();
     }
 
-    // id
     public Long getId() {
         return id;
     }
 
-    // user
     public UserEntity getUser() {
         return user;
     }
@@ -47,7 +45,6 @@ public class UserRoleEntity {
         this.user = user;
     }
 
-    // role
     public RoleEntity getRole() {
         return role;
     }
@@ -56,12 +53,10 @@ public class UserRoleEntity {
         this.role = role;
     }
 
-    // assignedAt
     public OffsetDateTime getAssignedAt() {
         return assignedAt;
     }
 
-    // assignedBy
     public UserEntity getAssignedBy() {
         return assignedBy;
     }

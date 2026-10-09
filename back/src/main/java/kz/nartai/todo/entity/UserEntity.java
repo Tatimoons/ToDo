@@ -60,12 +60,10 @@ public class UserEntity {
         this.updatedAt = OffsetDateTime.now();
     }
 
-    // id
     public Long getId() {
         return id;
     }
 
-    // username
     public String getUsername() {
         return username;
     }
@@ -74,7 +72,6 @@ public class UserEntity {
         this.username = username;
     }
 
-    // email
     public String getEmail() {
         return email;
     }
@@ -83,7 +80,6 @@ public class UserEntity {
         this.email = email;
     }
 
-    // password_hash
     public String getPasswordHash() {
         return passwordHash;
     }
@@ -92,7 +88,6 @@ public class UserEntity {
         this.passwordHash = passwordHash;
     }
 
-    // first_name
     public String getFirstName() {
         return firstName;
     }
@@ -101,7 +96,6 @@ public class UserEntity {
         this.firstName = firstName;
     }
 
-    // last_name
     public String getLastName() {
         return lastName;
     }
@@ -110,7 +104,6 @@ public class UserEntity {
         this.lastName = lastName;
     }
 
-    // phone_number
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -119,7 +112,6 @@ public class UserEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    // enable
     public boolean isEnabled() {
         return enabled;
     }
@@ -132,12 +124,10 @@ public class UserEntity {
         this.enabled = false;
     }
 
-    // created_at
     public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
 
-    // created_by
     public UserEntity getCreatedBy() {
         return createdBy;
     }
@@ -146,12 +136,10 @@ public class UserEntity {
         this.createdBy = createdBy;
     }
 
-    // updated_at
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    // updated_by
     public UserEntity getUpdatedBy() {
         return updatedBy;
     }
