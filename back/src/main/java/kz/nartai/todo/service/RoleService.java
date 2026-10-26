@@ -2,6 +2,7 @@ package kz.nartai.todo.service;
 
 import kz.nartai.todo.dto.RoleResponseDto;
 import kz.nartai.todo.entity.RoleEntity;
+import kz.nartai.todo.exception.RoleNotFoundException;
 import kz.nartai.todo.repository.RoleRepository;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,14 @@ public class RoleService {
         }
 
         return result;
+    }
+
+    public RoleResponseDto getRoleById(Long id) {
+        RoleEntity role = roleRepository.findById(id).orElseThrow(
+                () -> new RoleNotFoundException(id)
+        );
+
+        return toDto(role);
     }
 
     private RoleResponseDto toDto(RoleEntity role) {
