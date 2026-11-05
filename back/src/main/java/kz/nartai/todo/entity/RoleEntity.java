@@ -39,8 +39,7 @@ public class RoleEntity {
     @JoinColumn(name = "updated_by")
     private UserEntity updatedBy;
 
-    protected RoleEntity() {
-    }
+    protected RoleEntity() {}
 
     @PrePersist
     private void onCreate() {

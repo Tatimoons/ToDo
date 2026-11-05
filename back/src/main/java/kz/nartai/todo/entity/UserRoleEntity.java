@@ -25,8 +25,7 @@ public class UserRoleEntity {
     @JoinColumn(name = "assigned_by")
     private UserEntity assignedBy;
 
-    protected UserRoleEntity() {
-    }
+    protected UserRoleEntity() {}
 
     @PrePersist
     private void onCreate() {

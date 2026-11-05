@@ -45,8 +45,7 @@ public class UserEntity {
     @JoinColumn(name = "updated_by")
     private UserEntity updatedBy;
 
-    protected UserEntity() {
-    }
+    protected UserEntity() {}
 
     @PrePersist
     private void onCreate() {
