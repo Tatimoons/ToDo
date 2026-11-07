@@ -1,5 +1,6 @@
 package kz.nartai.todo.service;
 
+import kz.nartai.todo.dto.TaskCreateRequestDto;
 import kz.nartai.todo.dto.TaskResponseDto;
 import kz.nartai.todo.entity.TaskEntity;
 import kz.nartai.todo.repository.TaskRepository;
@@ -26,6 +27,13 @@ public class TaskService {
         }
 
         return result;
+    }
+
+    public TaskResponseDto createTask(TaskCreateRequestDto request) {
+        TaskEntity task = new TaskEntity(request.getTitle(), request.getDescription());
+        TaskEntity savedTask = taskRepository.save(task);
+
+        return toDto(savedTask);
     }
 
     private TaskResponseDto toDto(TaskEntity task) {

@@ -1,9 +1,10 @@
 package kz.nartai.todo.controller;
 
+import kz.nartai.todo.dto.TaskCreateRequestDto;
 import kz.nartai.todo.dto.TaskResponseDto;
 import kz.nartai.todo.service.TaskService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +19,11 @@ public class TaskController {
     @GetMapping("/tasks")
     public List<TaskResponseDto> getAllTasks() {
         return taskService.getAllTasks();
+    }
+
+    @PostMapping("/tasks")
+    @ResponseStatus(HttpStatus.CREATED)
+    public TaskResponseDto createTask(@RequestBody TaskCreateRequestDto request) {
+        return taskService.createTask(request);
     }
 }
