@@ -1,6 +1,9 @@
 package kz.nartai.todo.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class TaskCreateRequestDto {
+    @NotBlank
     private String title;
     private String description;
 

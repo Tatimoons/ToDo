@@ -1,5 +1,6 @@
 package kz.nartai.todo.controller;
 
+import jakarta.validation.Valid;
 import kz.nartai.todo.dto.TaskCreateRequestDto;
 import kz.nartai.todo.dto.TaskResponseDto;
 import kz.nartai.todo.service.TaskService;
@@ -23,7 +24,7 @@ public class TaskController {
 
     @PostMapping("/tasks")
     @ResponseStatus(HttpStatus.CREATED)
-    public TaskResponseDto createTask(@RequestBody TaskCreateRequestDto request) {
+    public TaskResponseDto createTask(@Valid @RequestBody TaskCreateRequestDto request) {
         return taskService.createTask(request);
     }
 }

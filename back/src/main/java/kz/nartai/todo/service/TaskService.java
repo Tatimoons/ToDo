@@ -30,7 +30,8 @@ public class TaskService {
     }
 
     public TaskResponseDto createTask(TaskCreateRequestDto request) {
-        TaskEntity task = new TaskEntity(request.getTitle(), request.getDescription());
+        String normalizedTitle = request.getTitle().strip();
+        TaskEntity task = new TaskEntity(normalizedTitle, request.getDescription());
         TaskEntity savedTask = taskRepository.save(task);
 
         return toDto(savedTask);
