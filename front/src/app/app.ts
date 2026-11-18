@@ -8,4 +8,9 @@ import { Component, signal } from '@angular/core';
 })
 export class App {
   protected readonly title = signal('todo-front');
+  description = 'Здесь будут мои задачи';
+
+  showEmptyMessage() {
+    this.description = 'Пока задач нет';
+  }
 }
