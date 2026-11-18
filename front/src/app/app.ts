@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 interface Task {
   id: number;
@@ -11,8 +12,14 @@ interface Task {
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly tasks = signal<Task[]>([
-    { id: 1, title: 'Задача 1' },
-    { id: 2, title: 'Задача 2' }
-  ]);
+  private readonly httpClient = inject(HttpClient);
+  protected readonly tasks = signal<Task[]>([]);
+
+  loadTasks(url: string) {
+    const request = this.httpClient.get<Task[]>(url);
+
+    request.subscribe(receivedTasks => {
+      this.tasks.set(receivedTasks);
+    });
+  }
 }
