@@ -7,10 +7,10 @@ export class TaskService {
     private readonly httpClient = inject(HttpClient);
 
     getTasks() {
-        return this.httpClient.get<Task[]>('/tasks');
+        return this.httpClient.get<Task[]>('/api/tasks');
     }
 
     createTask(requestBody: TaskCreateRequest) {
-        return this.httpClient.post<Task>('/tasks', requestBody);
+        return this.httpClient.post<Task>('/api/tasks', requestBody);
     }
 }

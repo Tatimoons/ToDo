@@ -3,25 +3,3 @@
     grid-template-columns: 200px 1fr;
     gap: 20px;
 }
-
-.new-task-label {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-bottom: 10px;
-}
-
-input, textarea {
-    background-color: #454545;
-    color: #E6E6E6;
-    border: 1px solid #999999;
-    padding: 10px;
-}
-
-.task-button {
-    background-color: #454545;
-    color: #E6E6E6;
-    border: 1px solid #999999;
-    border-radius: 5px;
-    padding: 5px;
-}

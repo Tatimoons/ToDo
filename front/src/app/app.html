@@ -3,58 +3,6 @@
     <app-sidebar></app-sidebar>
 
     <main>
-        <h1>Мои задачи</h1>
-
-        <section id="task-list">
-            <h2>Список задач</h2>
-            <button
-                type="button"
-                class="task-button primary-button"
-                (click)="loadTasks()">
-                Загрузить задачи
-            </button>
-
-            @if (taskListError()) {
-                <p>{{ taskListError() }}</p>
-            }
-
-            <ul>
-                @for (task of tasks(); track task.id) {
-                    <li>{{ task.title }}</li>
-                }
-            </ul>
-        </section>
-
-        <section id="new-task">
-            <h2>Новая задача</h2>
-            <label class="new-task-label">
-                Название задачи:
-                <input
-                    type="text"
-                    #titleInput
-                    (input)="draftTitle.set(titleInput.value)"
-                >
-            </label>
-
-            <label class="new-task-label">
-                Описание задачи:
-                <textarea
-                    #descriptionInput
-                    (input)="draftDescription.set(descriptionInput.value)"
-                ></textarea>
-            </label>
-
-            <button
-                type="button"
-                class="task-button primary-button"
-                [disabled]="isCreatingTask()"
-                (click)="createTask(draftTitle(), draftDescription())">
-                {{ isCreatingTask() ? 'Задача создается' : 'Создать задачу' }}
-            </button>
-
-            @if (statusMessage()) {
-                <p>{{ statusMessage() }}</p>
-            }
-        </section>
+        <router-outlet></router-outlet>
     </main>
 </div>

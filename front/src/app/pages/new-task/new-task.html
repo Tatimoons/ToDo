@@ -1,0 +1,31 @@
+<section id="new-task">
+    <h1>Новая задача</h1>
+    <label class="new-task-label">
+        Название задачи:
+        <input
+            type="text"
+            #titleInput
+            (input)="draftTitle.set(titleInput.value)"
+        >
+    </label>
+
+    <label class="new-task-label">
+        Описание задачи:
+        <textarea
+            #descriptionInput
+            (input)="draftDescription.set(descriptionInput.value)"
+        ></textarea>
+    </label>
+
+    <button
+        type="button"
+        class="task-button primary-button"
+        [disabled]="isCreatingTask()"
+        (click)="createTask(draftTitle(), draftDescription())">
+        {{ isCreatingTask() ? 'Задача создается' : 'Создать задачу' }}
+    </button>
+
+    @if (statusMessage()) {
+        <p>{{ statusMessage() }}</p>
+    }
+</section>
