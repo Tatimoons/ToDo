@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/tasks")
 public class TaskController {
     private final TaskService taskService;
 
@@ -17,12 +18,12 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping("/tasks")
+    @GetMapping
     public List<TaskResponseDto> getAllTasks() {
         return taskService.getAllTasks();
     }
 
-    @PostMapping("/tasks")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public TaskResponseDto createTask(@Valid @RequestBody TaskCreateRequestDto request) {
         return taskService.createTask(request);
