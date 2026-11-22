@@ -1,7 +1,7 @@
-import { Component, signal, inject } from '@angular/core';
-import { Task, TaskCreateRequest } from './model/task.model';
-import { TaskService } from './service/task.service';
-import { finalize } from 'rxjs';
+import {Component, signal, inject} from '@angular/core';
+import {Task, TaskCreateRequest} from './model/task.model';
+import {TaskService} from './service/task.service';
+import {finalize} from 'rxjs';
 
 @Component({
     selector: 'app-root',

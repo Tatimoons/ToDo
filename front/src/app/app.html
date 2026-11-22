@@ -1,6 +1,10 @@
 <h1>Мои задачи</h1>
 
-<button type="button" (click)="loadTasks()">Загрузить задачи</button>
+<button
+    type="button"
+    (click)="loadTasks()">
+    Загрузить задачи
+</button>
 
 <ul>
     @for (task of tasks(); track task.id) {
@@ -28,5 +32,6 @@
 <button
     type="button"
     [disabled]="isCreatingTask()"
-    (click)="createTask(draftTitle(), draftDescription())"
->{{ isCreatingTask() ? 'Задача создается' : 'Создать задачу' }}</button>
+    (click)="createTask(draftTitle(), draftDescription())">
+    {{ isCreatingTask() ? 'Задача создается' : 'Создать задачу' }}
+</button>

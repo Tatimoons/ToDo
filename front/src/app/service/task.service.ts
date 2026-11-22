@@ -1,6 +1,6 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Task, TaskCreateRequest } from '../model/task.model';
+import {Injectable, inject} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Task, TaskCreateRequest} from '../model/task.model';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
