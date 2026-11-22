@@ -16,12 +16,16 @@ export class App {
     protected readonly draftDescription = signal('');
     protected readonly isCreatingTask = signal(false);
     protected readonly statusMessage = signal('');
+    protected readonly taskListError = signal('');
 
     loadTasks() {
+        this.taskListError.set('');
+
         const request = this.taskService.getTasks();
 
-        request.subscribe(receivedTasks => {
-            this.tasks.set(receivedTasks);
+        request.subscribe({
+            next: (receivedTasks) => this.tasks.set(receivedTasks),
+            error: () => this.taskListError.set('Не удалось загрузить список задач')
         });
     }
 
