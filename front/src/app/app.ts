@@ -1,6 +1,7 @@
 import { Component, signal, inject } from '@angular/core';
 import { Task, TaskCreateRequest } from './model/task.model';
-import {TaskService} from './service/task.service';
+import { TaskService } from './service/task.service';
+import { finalize } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -13,6 +14,7 @@ export class App {
     protected readonly tasks = signal<Task[]>([]);
     protected readonly draftTitle = signal('');
     protected readonly draftDescription = signal('');
+    protected readonly isCreatingTask = signal(false);
 
     loadTasks() {
         const request = this.taskService.getTasks();
@@ -23,6 +25,7 @@ export class App {
     }
 
     createTask(title: string, description: string) {
+        this.isCreatingTask.set(true);
         const requestBody: TaskCreateRequest = {
             title: title
         }
@@ -31,8 +34,10 @@ export class App {
             requestBody.description = description;
         }
 
-        this.taskService.createTask(requestBody).subscribe(() => {
-            this.loadTasks();
-        })
+        this.taskService.createTask(requestBody)
+            .pipe(finalize(() => this.isCreatingTask.set(false)))
+            .subscribe(() => {
+                this.loadTasks();
+            });
     }
 }

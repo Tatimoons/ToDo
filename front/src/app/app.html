@@ -25,4 +25,8 @@
     ></textarea>
 </label>
 
-<button type="button" (click)="createTask(draftTitle(), draftDescription())">Создать задачу</button>
+<button
+    type="button"
+    [disabled]="isCreatingTask()"
+    (click)="createTask(draftTitle(), draftDescription())"
+>{{ isCreatingTask() ? 'Задача создается' : 'Создать задачу' }}</button>
