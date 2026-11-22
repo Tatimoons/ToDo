@@ -1,15 +1,6 @@
 import { Component, signal, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-interface Task {
-    id: number;
-    title: string;
-}
-
-interface TaskCreateRequest {
-    title: string;
-    description?: string;
-}
+import { Task, TaskCreateRequest } from './model/task.model';
+import {TaskService} from './service/task.service';
 
 @Component({
     selector: 'app-root',
@@ -17,14 +8,14 @@ interface TaskCreateRequest {
     styleUrl: './app.scss'
 })
 export class App {
-    private readonly httpClient = inject(HttpClient);
+    private readonly taskService = inject(TaskService);
 
     protected readonly tasks = signal<Task[]>([]);
     protected readonly draftTitle = signal('');
     protected readonly draftDescription = signal('');
 
-    loadTasks(url: string) {
-        const request = this.httpClient.get<Task[]>(url);
+    loadTasks() {
+        const request = this.taskService.getTasks();
 
         request.subscribe(receivedTasks => {
             this.tasks.set(receivedTasks);
@@ -40,8 +31,8 @@ export class App {
             requestBody.description = description;
         }
 
-        this.httpClient.post<Task>('/tasks', requestBody).subscribe(() => {
-            this.loadTasks('/tasks');
+        this.taskService.createTask(requestBody).subscribe(() => {
+            this.loadTasks();
         })
     }
 }
