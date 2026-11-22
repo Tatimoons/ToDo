@@ -1,7 +1,28 @@
 <h1>Мои задачи</h1>
-<ul>
-  @for (task of tasks(); track task.id) {
-    <li>{{ task.title }}</li>
-  }
-</ul>
+
 <button type="button" (click)="loadTasks('/tasks')">Загрузить задачи</button>
+
+<ul>
+    @for (task of tasks(); track task.id) {
+        <li>{{ task.title }}</li>
+    }
+</ul>
+
+<label>
+    Название задачи:
+    <input
+        type="text"
+        #titleInput
+        (input)="draftTitle.set(titleInput.value)"
+    >
+</label>
+
+<label>
+    Описание задачи:
+    <textarea
+        #descriptionInput
+        (input)="draftDescription.set(descriptionInput.value)"
+    ></textarea>
+</label>
+
+<button type="button" (click)="createTask(draftTitle(), draftDescription())">Создать задачу</button>
