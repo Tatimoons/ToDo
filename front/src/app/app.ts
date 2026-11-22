@@ -15,6 +15,7 @@ export class App {
     protected readonly draftTitle = signal('');
     protected readonly draftDescription = signal('');
     protected readonly isCreatingTask = signal(false);
+    protected readonly statusMessage = signal('');
 
     loadTasks() {
         const request = this.taskService.getTasks();
@@ -26,6 +27,8 @@ export class App {
 
     createTask(title: string, description: string) {
         this.isCreatingTask.set(true);
+        this.statusMessage.set('');
+
         const requestBody: TaskCreateRequest = {
             title: title
         }
@@ -36,8 +39,9 @@ export class App {
 
         this.taskService.createTask(requestBody)
             .pipe(finalize(() => this.isCreatingTask.set(false)))
-            .subscribe(() => {
-                this.loadTasks();
+            .subscribe({
+                next: () => this.loadTasks(),
+                error: () => this.statusMessage.set('Не удалось создать задачу')
             });
     }
 }

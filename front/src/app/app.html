@@ -35,3 +35,7 @@
     (click)="createTask(draftTitle(), draftDescription())">
     {{ isCreatingTask() ? 'Задача создается' : 'Создать задачу' }}
 </button>
+
+@if (statusMessage()) {
+    <p>{{ statusMessage() }}</p>
+}
