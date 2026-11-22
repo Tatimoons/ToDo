@@ -1,45 +1,60 @@
-<h1>Мои задачи</h1>
+<app-header></app-header>
+<div class="app-layout">
+    <app-sidebar></app-sidebar>
 
-<button
-    type="button"
-    (click)="loadTasks()">
-    Загрузить задачи
-</button>
+    <main>
+        <h1>Мои задачи</h1>
 
-@if (taskListError()) {
-    <p>{{ taskListError() }}</p>
-}
+        <section id="task-list">
+            <h2>Список задач</h2>
+            <button
+                type="button"
+                class="task-button primary-button"
+                (click)="loadTasks()">
+                Загрузить задачи
+            </button>
 
-<ul>
-    @for (task of tasks(); track task.id) {
-        <li>{{ task.title }}</li>
-    }
-</ul>
+            @if (taskListError()) {
+                <p>{{ taskListError() }}</p>
+            }
 
-<label>
-    Название задачи:
-    <input
-        type="text"
-        #titleInput
-        (input)="draftTitle.set(titleInput.value)"
-    >
-</label>
+            <ul>
+                @for (task of tasks(); track task.id) {
+                    <li>{{ task.title }}</li>
+                }
+            </ul>
+        </section>
 
-<label>
-    Описание задачи:
-    <textarea
-        #descriptionInput
-        (input)="draftDescription.set(descriptionInput.value)"
-    ></textarea>
-</label>
+        <section id="new-task">
+            <h2>Новая задача</h2>
+            <label class="new-task-label">
+                Название задачи:
+                <input
+                    type="text"
+                    #titleInput
+                    (input)="draftTitle.set(titleInput.value)"
+                >
+            </label>
 
-<button
-    type="button"
-    [disabled]="isCreatingTask()"
-    (click)="createTask(draftTitle(), draftDescription())">
-    {{ isCreatingTask() ? 'Задача создается' : 'Создать задачу' }}
-</button>
+            <label class="new-task-label">
+                Описание задачи:
+                <textarea
+                    #descriptionInput
+                    (input)="draftDescription.set(descriptionInput.value)"
+                ></textarea>
+            </label>
 
-@if (statusMessage()) {
-    <p>{{ statusMessage() }}</p>
-}
+            <button
+                type="button"
+                class="task-button primary-button"
+                [disabled]="isCreatingTask()"
+                (click)="createTask(draftTitle(), draftDescription())">
+                {{ isCreatingTask() ? 'Задача создается' : 'Создать задачу' }}
+            </button>
+
+            @if (statusMessage()) {
+                <p>{{ statusMessage() }}</p>
+            }
+        </section>
+    </main>
+</div>

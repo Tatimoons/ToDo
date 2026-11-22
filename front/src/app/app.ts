@@ -2,10 +2,16 @@ import {Component, signal, inject} from '@angular/core';
 import {Task, TaskCreateRequest} from './model/task.model';
 import {TaskService} from './service/task.service';
 import {finalize} from 'rxjs';
+import {Header} from './layout/header/header';
+import {Sidebar} from './layout/sidebar/sidebar';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.html',
+    imports: [
+        Header,
+        Sidebar
+    ],
     styleUrl: './app.scss'
 })
 export class App {
