@@ -1,0 +1,6 @@
+<input
+    #fieldInput
+    type="text"
+    [value]="value()"
+    (input)="valueChange.emit(fieldInput.value)"
+>

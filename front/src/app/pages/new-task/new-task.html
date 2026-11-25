@@ -1,13 +1,10 @@
 <section id="new-task">
     <h1>Новая задача</h1>
-    <label class="new-task-label">
-        Название задачи:
-        <input
-            type="text"
-            #titleInput
-            (input)="draftTitle.set(titleInput.value)"
-        >
-    </label>
+
+    <span>Название задачи</span>
+    <app-text-field
+        [(value)]="draftTitle"
+    ></app-text-field>
 
     <label class="new-task-label">
         Описание задачи:

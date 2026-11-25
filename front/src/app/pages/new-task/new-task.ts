@@ -2,12 +2,15 @@ import {Component, inject, signal} from '@angular/core';
 import {TaskService} from '../../service/task.service';
 import {TaskCreateRequest} from '../../model/task.model';
 import {finalize} from 'rxjs';
+import {TextField} from '../../shared/ui/text-field/text-field';
 
 @Component({
-  selector: 'app-new-task',
-  imports: [],
-  templateUrl: './new-task.html',
-  styleUrl: './new-task.scss',
+    selector: 'app-new-task',
+    imports: [
+        TextField
+    ],
+    templateUrl: './new-task.html',
+    styleUrl: './new-task.scss',
 })
 export class NewTask {
     private readonly taskService = inject(TaskService);
@@ -16,7 +19,6 @@ export class NewTask {
     protected readonly draftDescription = signal('');
     protected readonly isCreatingTask = signal(false);
     protected readonly statusMessage = signal('');
-
 
     createTask(title: string, description: string) {
         this.isCreatingTask.set(true);
